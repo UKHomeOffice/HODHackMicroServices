@@ -1,0 +1,18 @@
+{
+    "fields": {
+        "name": {
+            "label": "Your name"
+        }
+    },
+    "buttons": {
+        "next": "Continue",
+        "submit": "Submit"
+    },
+    "validation": {
+        "default": "You must answer this question."
+    },
+    "error": {
+        "default": "An unknown error occured",
+        "session": "Session timeout"
+    }
+}
