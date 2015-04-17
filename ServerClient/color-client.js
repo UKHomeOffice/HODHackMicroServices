@@ -1,6 +1,10 @@
 var seneca = require('seneca')();
 
 var services = {
+
+  color1 : 10178,
+  color2 : 10179,
+  store_form : 10171,
   color1 : 10171,
   color2 : 10173,
   mailer : 10172,

@@ -10,6 +10,7 @@
     "mongo-store": "0.0.2",
     "seneca": "^0.6.1",
     "seneca-mail": "^0.2.1",
+    "seneca-mongo-store" : "^0.2.0",
     "twitter": "^1.2.5"
   }
 }

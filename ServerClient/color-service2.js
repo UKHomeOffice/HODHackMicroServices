@@ -15,4 +15,4 @@ var seneca = require('seneca')
 
 seneca()
     .use(color)
-    .listen(10173)
+    .listen(10179)
