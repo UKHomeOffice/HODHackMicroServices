@@ -2,6 +2,9 @@
   "name": "HODHackMicrosServices",
   "version": "0.0.0",
   "dependencies": {
-    "seneca": "^0.6.1"
+    "ejs": "^2.3.1",
+    "email-templates": "^1.2.1",
+    "seneca": "^0.6.1",
+    "seneca-mail": "^0.2.1"
   }
 }
