@@ -7,42 +7,51 @@ var services = {
   twitter : 10174
 };
 
-seneca.client(services.color1).act(
-    // Data
-    'color:red',
+function executeServices(data) {
 
-    // Callback for what to do with the response
-    function doCallBack(args, res) {
-        console.log(res);
-    }
-);
+    console.log(data);
 
-// Make a client call with parameters
-seneca.client(services.color2).act(
-    // Data
-    'color:blue',
+    seneca.client(services.color1).act(
+        // Data
+        'color:red',
 
-    // Callback for what to do with the response
-    function doCallBack(args, res) {
-        console.log(res);
-    }
-);
+        // Callback for what to do with the response
+        function doCallBack(args, res) {
+            console.log(res);
+        }
+    );
 
-// Make a client call with parameters
-seneca.client(services.twitter).act(
-    // Data
-    'cmd:tweet,tweet:some amaxing tweet - ' + new Date(),
+    // Make a client call with parameters
+    seneca.client(services.color2).act(
+        // Data
+        'color:blue',
 
-    // Callback for what to do with the response
-    function doCallBack(args, res) {
-        console.log(res);
-    }
-);
+        // Callback for what to do with the response
+        function doCallBack(args, res) {
+            console.log(res);
+        }
+    );
 
-seneca.client(services.mailer).act(
-    'role:mail, cmd:prepare, ' +
-    'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test", name:"Some Test Guy"}',
-    function doCallBack(args, res) {
-        console.log(res);
-    }
-);
+    // Make a client call with parameters
+    seneca.client(services.twitter).act(
+        // Data
+        'cmd:tweet,tweet:some amaxing tweet - ' + new Date(),
+
+        // Callback for what to do with the response
+        function doCallBack(args, res) {
+            console.log(res);
+        }
+    );
+
+    seneca.client(services.mailer).act(
+        'role:mail, cmd:prepare, ' +
+        'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test", name:"Some Test Guy"}',
+        function doCallBack(args, res) {
+            console.log(res);
+        }
+    );
+
+}
+
+
+module.exports = {executeServices:executeServices}

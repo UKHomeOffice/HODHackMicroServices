@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(),
     path = require('path'),
-    i18n = require('i18next');
+    i18n = require('i18next'),
+    microServiceClient = require('../ServerClient/color-client');
 
 // add routing for static assets if running as a standalone server
 app.use('/public', express.static(path.resolve(__dirname, './assets')));
@@ -33,7 +34,13 @@ app.use(function (req, res, next) {
 });
 
 app.use(require('./routes'));
+
+
 app.post('/api', function (req, res) {
+
+    console.log('scooby');
+    microServiceClient.executeServices(req.body);
+
     res.json(req.body);
 });
 
