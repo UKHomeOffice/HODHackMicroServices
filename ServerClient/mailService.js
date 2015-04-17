@@ -4,26 +4,28 @@
  */
 function prepareMail(args)
 {
+    var util = require('util');
+
     this.add(
         {
             role:'mail',
             cmd:'prepare'
         },
         function(args, callback) {
-            var arguments = args.args;
+            var arguments = util.inspect(args.args);
 
-            callback(
-                null,
-                seneca.act({
+            seneca.act(
+                {
                     role    : 'mail',
                     cmd     : 'send',
                     code    : arguments.code    || 'default',
                     to      : arguments.to      || 'hod.hacker@gmail.com',
                     subject : arguments.subject || null,
                     content : {
-                        name: arguments.name     || 'Customer One'
+                        name: arguments.name    || 'Customer One'
                     }
-                })
+                },
+                callback
             );
         }
     );
