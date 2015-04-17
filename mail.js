@@ -12,16 +12,16 @@ seneca.use('mail',{
             pass: "hodhacker1"
         }
     }
-})
+});
 
 seneca.add(
     {role:'mail', cmd:'prepare'},
     function(args, callback) {
-        $template   = args.code || 'default';
-        $name       = args.name || 'Customer One';
-        $recipient  = args.to || 'hod.hacker@gmail.com';
-        $subject = $template.toUpperCase()
-        $content = {
+        $template   = args.code     || 'default';
+        $name       = args.name     || 'Customer One';
+        $recipient  = args.to       || 'hod.hacker@gmail.com';
+        $subject    = args.subject  || $template.toUpperCase()
+        $content    = {
             name: $name
         };
 
@@ -45,5 +45,7 @@ seneca.ready(function(err){
     seneca.act({role:'mail', cmd:'prepare'});
     seneca.act({role:'mail', cmd:'prepare', code:'welcome'});
     seneca.act({role:'mail', cmd:'prepare', code:'update'});
+    seneca.act({role:'mail', cmd:'prepare', code:'welcome', name: 'That guy', subject: 'Argument test'});
 
-})
+});
+
