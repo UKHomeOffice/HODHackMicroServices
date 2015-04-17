@@ -12,6 +12,7 @@
     "body-parser": "^1.12.2",
     "express": "^4.12.3",
     "express-partial-templates": "^0.1.0",
+    "hmpo-form-controller": "0.0.6",
     "hmpo-form-wizard": "UKHomeOffice/passports-form-wizard#v0.2.4",
     "hmpo-frontend-toolkit": "^1.0.3",
     "hmpo-govuk-template": "0.0.3",

@@ -6,13 +6,15 @@ module.exports = {
     },
     '/name': {
         fields: ['name'],
+        next: '/age'
+    },
+    '/age': {
+        fields: ['age'],
         next: '/submit'
     },
     '/submit': {
         controller: require('../controllers/submit'),
         next: '/done'
     },
-    '/done': {
-
-    }
+    '/done': {}
 }

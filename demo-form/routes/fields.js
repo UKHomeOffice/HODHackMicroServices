@@ -1,5 +1,16 @@
 module.exports = {
     name: {
-        validate: 'required'
+        validate: [
+            'required'
+        ]
+    },
+    age: {
+        validate: [
+            'required',
+            'numeric'
+        ],
+        formatter: [
+            'numeric'
+        ]
     }
 }

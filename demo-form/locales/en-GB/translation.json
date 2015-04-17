@@ -2,6 +2,9 @@
     "fields": {
         "name": {
             "label": "Your name"
+        },
+        "age": {
+            "label": "Your age"
         }
     },
     "buttons": {
@@ -9,6 +12,8 @@
         "submit": "Submit"
     },
     "validation": {
+        "required": "Please enter {{label}}.",
+        "numeric": "{{label}} must only contain numbers.",
         "default": "You must answer this question."
     },
     "error": {
