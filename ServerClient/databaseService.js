@@ -35,5 +35,10 @@ function store_form() {
 }
 
 seneca()
+    .use('mongo-store',{
+        name:'form_data_store',
+        host:'127.0.0.1',
+        port:27017
+    })
     .use(store_form)
     .listen(10171);
