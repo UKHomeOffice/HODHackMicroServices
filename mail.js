@@ -17,22 +17,21 @@ seneca.use('mail',{
 seneca.add(
     {role:'mail', cmd:'prepare'},
     function(args, callback) {
-        $template   = args.code     || 'default';
-        $name       = args.name     || 'Customer One';
-        $recipient  = args.to       || 'hod.hacker@gmail.com';
-        $subject    = args.subject  || $template.toUpperCase()
-        $content    = {
-            name: $name
+
+        var arguments = args.args;
+
+        $content    = arguments.content || {
+            name: arguments.name     || 'Customer One'
         };
 
         callback(
             null,
             seneca.act({
-                role:'mail',
-                cmd:'send',
-                code: $template,
-                to: $recipient,
-                subject: $subject,
+                role: 'mail',
+                cmd:  'send',
+                code: arguments.code || 'default',
+                to:   arguments.to || 'hod.hacker@gmail.com',
+                subject: arguments.subject  || '',
                 content: $content
             })
         );
@@ -42,10 +41,15 @@ seneca.add(
 seneca.ready(function(err){
     if( err ) return console.log(err);
 
-    seneca.act({role:'mail', cmd:'prepare'});
-    seneca.act({role:'mail', cmd:'prepare', code:'welcome'});
-    seneca.act({role:'mail', cmd:'prepare', code:'update'});
-    seneca.act({role:'mail', cmd:'prepare', code:'welcome', name: 'That guy', subject: 'Argument test'});
+    $arguments = process.argv[2].toString() || {};
+
+    try {
+        $arguments = JSON.parse($arguments.toString());
+    }catch (e) {
+        console.log(e.toString());
+    }
+
+    seneca.act({role:'mail', cmd:'prepare', args: $arguments});
 
 });
 
