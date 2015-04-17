@@ -7,6 +7,7 @@
     "ejs": "^2.3.1",
     "email-templates": "^1.2.1",
     "express": "^4.12.3",
+    "mongo-store": "0.0.2",
     "seneca": "^0.6.1",
     "seneca-mail": "^0.2.1",
     "twitter": "^1.2.5"
