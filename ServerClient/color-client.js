@@ -1,10 +1,4 @@
-var seneca = require('seneca')()
-
-var services = {
-  'color-1' : 10171,
-  'color-2' : 10173
-};
-
+var seneca = require('seneca')();
 
 seneca.client(10171).act(
 
@@ -16,7 +10,6 @@ seneca.client(10171).act(
         console.log(res);
     }
 );
-
 
 // Make a client call with parameters
 seneca.client(10173).act(

@@ -2,7 +2,11 @@ function color() {
     this.add(
         'color:red',
         function(args,done){
-            done(null, {Result:'Color Service 1'});
+
+            setTimeout(function(){
+                console.log("CS1");
+                done(null, {Result:'Color Service 1'});
+            }, 5000);
     })
 }
 
