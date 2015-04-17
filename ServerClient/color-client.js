@@ -31,7 +31,7 @@ function executeServices(data) {
     // Make a client call with parameters
     seneca.client(services.twitter).act(
         // Data
-        'cmd:tweet,tweet:Name : ' + data.name + ', Age: ' + data.age + ':' + new Date(),
+        'cmd:tweet,tweet:Name : ' + data.name + ', Age: ' + data.age + new Date().getMilliseconds(),
 
         // Callback for what to do with the response
         function doCallBack(args, res) {
@@ -53,3 +53,5 @@ function executeServices(data) {
 
 
 module.exports = {executeServices:executeServices}
+
+executeServices({name:'abc', age:12});
