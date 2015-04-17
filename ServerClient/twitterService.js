@@ -12,6 +12,7 @@ function tweet() {
     this.add(
         'cmd:tweet',
         function(args,done){
+            console.log(args);
             client.post('statuses/update', {status: args.tweet},  function(error, tweet, response){
                 if(error) throw error;
                 console.log(tweet);

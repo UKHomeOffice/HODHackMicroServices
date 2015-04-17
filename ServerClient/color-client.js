@@ -9,6 +9,9 @@ var services = {
   twitter : 10174
 };
 
+
+
+
 function executeServices(data, callback) {
 
 
@@ -18,7 +21,7 @@ function executeServices(data, callback) {
     // Make a client call with parameters
     seneca.client(services.store_form).act(
         // Data
-        'cmd:store_form,name:ukvi_form,data:lots_of_form',
+        'cmd:store_form,name:ukvi_form,data:'+JSON.stringify(data),
         // Callback for what to do with the response
         function doCallBack(args, res) {
             console.log(res);
@@ -36,6 +39,7 @@ function executeServices(data, callback) {
 
         // Callback for what to do with the response
         function (args, res) {
+            console.log(args);
             seneca.client(services.mailer).act(
                 'role:mail, cmd:prepare, ' +
                 'args:{to:"hod.hacker@gmail.com", subject:"Form Received", name:"' + data.name + '", age: "'+ data.age + '", code: "welcome"}',
@@ -45,23 +49,12 @@ function executeServices(data, callback) {
                     }
                 }
             );
-        });
-
-
+        }
+    );
     console.log('Twitter Sent');
 
-    seneca.client(services.mailer).act(
-        'role:mail, cmd:prepare, ' +
-        'args:{to:"hod.hacker@gmail.com", subject:"Form Received", name:"' + data.name + '", age: "'+ data.age + '", code: "welcome"}',
-        function doCallBack(args, res) {
-            console.log(res);
-        }
 
-    );
     console.log('Email Sent');
 }
 
-
 module.exports = {executeServices:executeServices}
-
-executeServices({name:'abc', age:12});
