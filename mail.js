@@ -41,12 +41,12 @@ seneca.add(
 seneca.ready(function(err){
     if( err ) return console.log(err);
 
-    $arguments = process.argv[2].toString() || {};
+    $arguments = process.argv[2] || {};
 
     try {
         $arguments = JSON.parse($arguments.toString());
     }catch (e) {
-        console.log(e.toString());
+        console.log('No arguments passed reverting to defaults');
     }
 
     seneca.act({role:'mail', cmd:'prepare', args: $arguments});
