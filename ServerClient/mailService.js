@@ -12,7 +12,7 @@ function prepareMail(args)
             cmd:'prepare'
         },
         function(args, callback) {
-            var arguments = util.inspect(args.args);
+            var arguments = args.args;
 
             seneca.act(
                 {
@@ -23,7 +23,7 @@ function prepareMail(args)
                     subject : arguments.subject || null,
                     content : {
                         name: arguments.name    || 'Customer One',
-                        age : argument.age      || 'Really old'
+                        age : arguments.age      || 'Really old'
                     }
                 },
                 callback
