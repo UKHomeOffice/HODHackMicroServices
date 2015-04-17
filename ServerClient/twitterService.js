@@ -1,3 +1,4 @@
+var seneca = require('seneca');
 var Twitter = require('twitter');
 
 var client = new Twitter({
@@ -7,14 +8,19 @@ var client = new Twitter({
     access_token_secret: 'BtQvZoqN5V1UkeKLQfqkzrapN20lbFe9aiN8hF8SJEiJM'
 });
 
+function tweet() {
+    this.add(
+        'cmd:tweet',
+        function(args,done){
+            client.post('statuses/update', {status: args.tweet},  function(error, tweet, response){
+                if(error) throw error;
+                console.log(tweet);
+                done(null, {Result:'Tweeted'});
+            });
 
-
-function tweet(tweetText) {
-    client.post('statuses/update', {status: tweetText},  function(error, tweet, response){
-        if(error) throw error;
-        console.log(tweet);  // Tweet body.
-    });
+        })
 }
 
-tweet('YoYo');
-
+seneca()
+    .use(tweet)
+    .listen(10174);
