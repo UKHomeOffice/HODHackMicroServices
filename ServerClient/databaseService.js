@@ -19,12 +19,9 @@ function store_form() {
             console.log(args.data)
             console.log("#### Form Body END   ####")
 
-            seneca.ready(function(err){
-                console.log("line1")
-                var form = seneca.make$(args.name)
-                console.log("line2")
+            this.ready(function(err){
+                var form = this.make$(args.name)
                 form.data  = args.data
-                console.log("line3")
                 form.time  = new Date()
 
                 form.save$(function(err,form){
@@ -32,10 +29,9 @@ function store_form() {
                     console.log( " saved"  )
                     done(null,{Result:'Saved to db'})
                 })
-            })
+            }.bind(this))
 
-
-        })
+        }.bind(this))
 }
 
 seneca()
