@@ -1,0 +1,7 @@
+{
+  "name": "HODHackMicrosServices",
+  "version": "0.0.0",
+  "dependencies": {
+    "seneca": "^0.6.1"
+  }
+}
