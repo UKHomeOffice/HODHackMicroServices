@@ -1,24 +1,15 @@
 var seneca = require('seneca')();
 
 var services = {
-  color1 : 10171,
+  store_form : 10171,
   color2 : 10173,
   mailer : 10172,
   twitter : 10174
 };
 
-seneca.client(services.color1).act(
-    // Data
-    'color:red',
-
-    // Callback for what to do with the response
-    function doCallBack(args, res) {
-        console.log(res);
-    }
-);
-
 // Make a client call with parameters
 seneca.client(services.color2).act(
+
     // Data
     'color:blue',
 
@@ -32,6 +23,17 @@ seneca.client(services.color2).act(
 seneca.client(services.twitter).act(
     // Data
     'cmd:tweet,tweet:some amaxing tweet - ' + new Date(),
+
+    // Callback for what to do with the response
+    function doCallBack(args, res) {
+        console.log(res);
+    }
+);
+
+// Make a client call with parameters
+seneca.client(services.store_form).act(
+    // Data
+    'cmd:store_form,name:ukvi_form,data:lots_of_form',
 
     // Callback for what to do with the response
     function doCallBack(args, res) {
