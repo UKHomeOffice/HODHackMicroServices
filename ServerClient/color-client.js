@@ -41,9 +41,28 @@ seneca.client(services.store_form).act(
     }
 );
 
+//Sends a default email
 seneca.client(services.mailer).act(
     'role:mail, cmd:prepare, ' +
     'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test", name:"Some Test Guy"}',
+    function doCallBack(args, res) {
+        console.log(res);
+    }
+);
+
+//Sends the welcome email
+seneca.client(services.mailer).act(
+    'role:mail, cmd:prepare, ' +
+    'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test 2", name:"Some Test Guy", code:"welcome"}',
+    function doCallBack(args, res) {
+        console.log(res);
+    }
+);
+
+//sends the update emailS
+seneca.client(services.mailer).act(
+    'role:mail, cmd:prepare, ' +
+    'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test 3", name:"Some Test Guy", code:"update"}',
     function doCallBack(args, res) {
         console.log(res);
     }
