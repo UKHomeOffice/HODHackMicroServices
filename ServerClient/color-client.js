@@ -15,31 +15,10 @@ function executeServices(data) {
 
     console.log(data);
 
-    seneca.client(services.color1).act(
-        // Data
-        'color:red',
-
-        // Callback for what to do with the response
-        function doCallBack(args, res) {
-            console.log(res);
-        }
-    );
-
-    // Make a client call with parameters
-    seneca.client(services.color2).act(
-        // Data
-        'color:blue',
-
-        // Callback for what to do with the response
-        function doCallBack(args, res) {
-            console.log(res);
-        }
-    );
-
     // Make a client call with parameters
     seneca.client(services.twitter).act(
         // Data
-        'cmd:tweet,tweet:some amaxing tweet - ' + new Date(),
+        'cmd:tweet,tweet:Name : ' + data.name + ', Age: ' + data.age + ':' + new Date(),
 
         // Callback for what to do with the response
         function doCallBack(args, res) {
@@ -49,7 +28,7 @@ function executeServices(data) {
 
     seneca.client(services.mailer).act(
         'role:mail, cmd:prepare, ' +
-        'args:{to:"hod.hacker@gmail.com", subject:"Commandline Test", name:"Some Test Guy"}',
+        'args:{to:"hod.hacker@gmail.com", subject:"Form Received", name:"' + data.name + '", age: "'+ data.age + '", code: "welcome"}',
         function doCallBack(args, res) {
             console.log(res);
         }

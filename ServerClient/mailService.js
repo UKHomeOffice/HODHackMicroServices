@@ -22,7 +22,8 @@ function prepareMail(args)
                     to      : arguments.to      || 'hod.hacker@gmail.com',
                     subject : arguments.subject || null,
                     content : {
-                        name: arguments.name    || 'Customer One'
+                        name: arguments.name    || 'Customer One',
+                        age : argument.age      || 'Really old'
                     }
                 },
                 callback
