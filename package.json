@@ -5,12 +5,12 @@
     "body-parser": "^1.12.3",
     "connect": "*",
     "ejs": "^2.3.1",
-    "email-templates": "^1.2.1",
+    "email-templates": "^2.5.4",
     "express": "^4.12.3",
     "mongo-store": "0.0.2",
-    "seneca": "^0.6.1",
+    "seneca": "^3.2.2",
     "seneca-mail": "^0.2.1",
-    "seneca-mongo-store" : "^0.2.0",
+    "seneca-mongo-store" : "^1.1.0",
     "twitter": "^1.2.5"
   }
 }
